@@ -23,9 +23,10 @@
         "action": "send_text",
         "parameters":
         {
-            "text": "_نرحب بكم في خدمة عملاء تباشير  للعطلات_"
+            "text": "_نرحب بكم في خدمة عملاء تباشير   للعطلات_"
         }
       },
+
       {
         "action": "send_text",
         "parameters":
@@ -33,6 +34,7 @@
             "text": "*نسعد بخدمتكم*"
         }
       },
+
       {
         "action": "trigger",
         "parameters":
@@ -55,7 +57,7 @@
         "action": "prompt",
         "parameters": 
         {
-          "text": " الرجاء ادخال اسمك؟",
+          "text": " الرجاء ادخال  اسمك؟",
           "property": "username",
           "store": true,
           "prestored_send": false
