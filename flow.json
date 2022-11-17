@@ -1,0 +1,654 @@
+[
+  {
+    "name": "start",
+    "trigger":
+    [
+      {
+        "type": "regex",
+        "regex": ".*"
+      }
+    ],
+    "actions":
+    [
+      {
+        "action": "send_image",
+        "parameters":
+        {
+          "name": "logo",
+          "attachment": "logo.jpg",
+          "caption": " "
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+            "text": "_نرحب بكم في خدمة عملاء تباشير  للعطلات_"
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+            "text": "*نسعد بخدمتكم*"
+        }
+      },
+      {
+        "action": "trigger",
+        "parameters":
+        {
+          "name": "get_username"
+        }
+      }
+    ]
+  },
+
+
+
+
+  {
+    "name": "get_username",
+    "trigger": [],
+    "actions": 
+    [
+      {
+        "action": "prompt",
+        "parameters": 
+        {
+          "text": " الرجاء ادخال اسمك؟",
+          "property": "username",
+          "store": true,
+          "prestored_send": false
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": " مرحبا  *P{username}*"
+        }
+      },
+      {
+        "action": "send_buttons",
+        "parameters":
+        {
+          "title": "اين تريد الحصول على خدماتنا؟",
+          "description": "  ",
+          "property": "Location",
+          "store": true,
+          "prestored_send": false,
+          "prestored_actions": true,
+          "buttons": 
+          [
+            {
+              "text": "السودان",
+              "actions": 
+              [
+                {
+                  "action": "send_text",
+                  "parameters": 
+                  {
+                    "text": ""
+                  }
+                }
+              ]
+            },
+            {
+              "text": "مصر",
+              "actions": 
+              [
+                {
+                  "action": "send_text",
+                  "parameters":
+                  {
+                    "text": ""
+                  }
+                }
+              ]
+            },
+            {
+              "text": "اماكن اخرى",
+              "actions": 
+              [
+                {
+                  "action": "send_text",
+                  "parameters": 
+                  {
+                    "text": ""
+                  }
+                }
+              ]
+            },
+            {
+                "text": "اخرى",
+                "actions":
+                [
+                  {
+                    "action": "send_text",
+                    "parameters":
+                    {
+                      "text": ""
+                    }
+                  }
+                ]
+            }
+          ]
+        }
+      },
+      {
+        "action": "trigger",
+        "parameters": 
+        {
+          "name": "intro"
+        }
+      }
+    ]
+  },
+
+
+
+
+
+
+  
+
+
+  
+  {
+    "name": "intro",
+    "trigger": [],
+    "actions": 
+    [
+      {
+        "action": "send_buttons",
+        "parameters": 
+        {
+          "title": "الرجاء الاختيار",
+          "description": "  ",
+          "buttons": 
+          [
+            
+            {
+              "text": "التأشيرات و الزيارات ",
+              "actions": 
+              [
+                {
+                  "action": "trigger",
+                  "parameters": 
+                  {
+                    "name": "visas"
+                  }
+                }
+              ]
+            },
+            {
+              "text": "الحج والعمرة",
+              "actions": 
+              [
+                {
+                  "action": "trigger",
+                  "parameters": 
+                  {
+                    "name": "hajj"
+                  }
+                }
+              ]
+            },
+            {
+              "text": "الخدمات الاخرى",
+              "actions": 
+              [
+                {
+                  "action": "trigger",
+                  "parameters": 
+                  {
+                    "name": "others"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+
+
+
+
+
+
+  
+  {
+    "name": "visas",
+    "trigger": 
+    [
+      {
+        "type": "regex",
+        "regex": "Visas",
+        "case_sensetive": true
+      }
+    ],
+
+    "actions": 
+
+    [
+      {
+        "action": "send_list",
+        "parameters": 
+        {
+          "title": "*التأشيرات والزيارات*",
+          "description": ":نوفر لك العديد من خدمات التأشيرات والزيارات للعديد من دول العالم الرجاء اختيار الخدمة التي تريدها",
+          "text": " ",
+          "property":"visas",
+          "store":true,
+          "prestored_send":false,
+          "prestored_actions":false,
+          "sections": 
+          [
+
+
+            {
+              "title": "*الزيارات*",
+              "rows": 
+              
+              [
+                {
+                  "title": "زيارة السعودية",
+                  "description": "نقدم خدمة التقديم لمختلف انواع الزيارات للملكة العربية السعودية",
+                  "actions": 
+                  
+                  [
+                    {
+                      "action": "send_text",
+                      "parameters": 
+                      {
+                        "text": "  نقوم بجميع اجراءات السفارة السعودية المتعلقة باجراءات الزيارات "
+                      }
+                    },
+                    {
+                      "action": "send_image",
+                      "parameters": 
+                      {
+                        "name": "saud-masr-add",
+                        "attachment": "saudi_masr_add.jpg",
+                        "caption": " "
+                      }
+                    },
+                    {
+                      "action": "send_image",
+                      "parameters": 
+                      {
+                        "name": "saud-masr-procedures",
+                        "attachment": "saudi_procedures.jpg",
+                        "caption": " "
+                      }
+                    }                                         
+                  ]             
+                },
+                {
+                  "title": " زيارات الامارات",
+                  "description": "الوصف...........",
+                  "actions": 
+                  [
+                    {
+                      "action": "send_text",
+                      "parameters": 
+                      {
+                        "text": "..."
+                      }
+                    }
+                  ]
+                },               
+                {
+                  "title": "...",
+                  "description": "...",
+                  "actions": 
+                  [
+                    {
+                      "action": "send_text",
+                      "parameters": 
+                      {
+                        "text": "..."
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+
+
+            {
+              "title": "...",
+              "rows": [
+                {
+                  "title": "خدمات الحج",
+                  "description": "عرض خدمات الحج",
+                  "actions": [
+                    {
+                      "action": "send_text",
+                      "parameters": {
+                        "text": "خدمات الحج ..."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "خدمات العمرة",
+                  "description": "خدمات العمرة ..."
+                }
+              ]
+            }
+
+          ]
+        }
+      },
+
+
+
+
+      {
+        "action": "trigger",
+        "parameters": {
+            "name": "goget"
+        }
+      }
+
+
+    ]
+  },
+
+
+
+  {
+    "name": "hajj",
+    "trigger": [
+      {
+        "type": "regex",
+        "regex": "الخدمات",
+        "case_sensetive": true
+      }
+    ],
+    "actions": [
+      {
+        "action": "send_list",
+        "parameters": {
+          "title": "الخدمات المتاحة",
+          "description": "نوفر لك العديد من خدمات السياحة والحج والعمرة",
+          "text": "الخدمات",
+          "property":"services2",
+          "store":true,
+          "prestored_send":true,
+          "prestored_actions":false,
+          "sections": [
+            {
+              "title": "السياحة",
+              "rows": [
+                {
+                  "title": "خدمة y",
+                  "description": "الوصف الخاص بخدمة السياحة رقم 1",
+                  "actions": [
+                    {
+                      "action": "send_text",
+                      "parameters": {
+                        "text": " this is the y service"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "خدمة سياحة رقم 3",
+                  "description": "الوصف الخاص بخدمة السياحة رقم 3",
+                  "actions": [
+                    {
+                      "action": "send_text",
+                      "parameters": {
+                        "text": "معلومات عن خدمة السياحة رقم 3 ..."
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "الحج والعمرة",
+              "rows": [
+                {
+                  "title": "خدمات الحج",
+                  "description": "عرض خدمات الحج",
+                  "actions": [
+                    {
+                      "action": "send_text",
+                      "parameters": {
+                        "text": "خدمات الحج ..."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "خدمات العمرة",
+                  "description": "خدمات العمرة ..."
+                }
+              ]
+            },
+            {
+              "title": "تجربة ارسال الملفات",
+              "rows": [
+                {
+                  "title": "ارسلي ملف",
+                  "description": "ارسال ملف تجريبي",
+                  "actions": [
+                    {
+                      "action": "send_file",
+                      "parameters": {
+                        "name": "flowchart pdf file",
+                        "attachment": "flowchart.pdf",
+                        "caption": "ملف pdf يحتوي علي الflowchart"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+
+      
+      {
+        "action": "trigger",
+        "parameters": {
+            "name": "goget"
+        }
+      }
+    ]
+  },
+
+
+
+  {
+    "name": "goget",
+    "trigger": [],
+    "actions": 
+    [
+      {
+        "action": "send_buttons",
+        "parameters": 
+        {
+          "title": "يرجي الاختيار",
+          "description":"اختر احدي الخيارات",
+          "buttons": 
+          [
+            {
+                "text": "خدمة العملاء",
+                "actions": 
+                [
+                  {
+                    "action": "trigger",
+                    "parameters": 
+                    {
+                        "name": "support"
+                    }
+                  }
+                ]
+            },
+
+
+            {
+              "text": "Back to services",
+              "actions": 
+              [
+                {
+                  "action": "trigger",
+                  "parameters": 
+                  {
+                    "name": "main_menu"
+                  }
+                }
+              ]
+            },
+
+
+            {
+              "text": "انهاء المحادثة",
+              "actions": 
+              [
+                {
+                  "action": "trigger",
+                  "parameters": 
+                  {
+                    "name": "fin"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+
+
+  {
+    "name": "support",
+    "trigger": 
+    [
+      {
+        "type": "regex",
+        "regex": "خدمة العملاء",
+        "case_sensetive": true
+      }
+    ],
+    "actions": 
+    [
+      {
+        "action": "support"
+      }
+    ]
+  },
+
+
+
+  {
+    "name": "fin",
+    "trigger": [],
+    "actions": 
+    [
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": " شكرا  *P{username}*"
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": "_لمزيد من المعلومات يسعدنا تلقي اتصالاتكم واستفساراتكم _"
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": "+249912360462"
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": "+201114127444"
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": "+201110409523"
+        }
+      },
+      {
+        "action": "send_text",
+        "parameters":
+        {
+          "text": "tabasheerholidays.com"
+        }
+      }
+    ]
+  },
+
+
+
+  
+  {
+    "name": "main_menu",
+    "trigger": [],
+    "actions": 
+    [
+      {
+        "action": "send_buttons",
+        "parameters":
+        {
+          "title": " القائمة الرئيسية",
+          "description":"   ",
+          "buttons": 
+          [
+            {
+              "text": "*التأشيرات والزيارات*",
+
+              "actions":
+              [
+                {
+                  "action": "trigger",
+                  "parameters":
+                  {
+                    "name": "visas"
+                  }
+                }
+              ]
+            },
+
+
+            {
+              "text": "الحج والعمرة",
+              "actions":
+              [
+                {
+                  "action": "trigger",
+                  "parameters":
+                  {
+                    "name": "hajj"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
